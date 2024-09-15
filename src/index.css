@@ -2,5 +2,12 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
 }
 
+:root {
+  --color1: #fa7070;
+  --color2: #fefded;
+  --color3: #c6ebc5;
+  --color4: #a1c398;
+}

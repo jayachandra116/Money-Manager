@@ -1,0 +1,35 @@
+.nav-bar {
+  width: 100vw;
+  background-color: var(--color2);
+  color: black;
+  padding: 0.5rem 3rem;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.nav-bar header a {
+  text-decoration: none;
+}
+
+.header__buttons {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+}
+
+.header__button {
+  border: none;
+  padding: 0.25rem;
+  color: black;
+  background-color: var(--color2);
+}
+
+.header__button:hover {
+  color: blue;
+  cursor: pointer;
+}
