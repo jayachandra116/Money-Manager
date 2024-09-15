@@ -3,6 +3,7 @@
   margin: 0px;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
+  background-color: var(--color2);
 }
 
 :root {

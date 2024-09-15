@@ -2,12 +2,12 @@
   width: 100vw;
   background-color: var(--color2);
   color: black;
-  padding: 0.5rem 3rem;
   min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-weight: bold;
+  padding: 2rem 3rem;
 }
 
 .nav-bar header a {
