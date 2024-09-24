@@ -6,6 +6,11 @@
   background-color: var(--color2);
 }
 
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --color1: #fa7070;
   --color2: #fefded;

@@ -1,0 +1,69 @@
+.transactions {
+  font-family: inherit;
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 8px;
+  min-height: 500px;
+}
+
+/* header section */
+.transactions header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.transactions header h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.actions-btn {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: var(--color1); */
+  /* color: inherit; */
+  border: none;
+  border-radius: 4px;
+  gap: 0.25rem;
+}
+
+.actions-btn span,
+p {
+  background-color: inherit;
+  color: inherit;
+}
+
+.actions-btn:hover {
+  cursor: pointer;
+  background-color: var(--color1);
+  color: var(--color2);
+}
+
+/* list section */
+
+.transactions-list {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.transaction-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 2fr 2fr 1fr;
+  font-weight: bold;
+  padding: 15px 10px;
+  border-bottom: 2px solid #ddd;
+}

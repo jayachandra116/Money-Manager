@@ -1,6 +1,10 @@
 import classes from "./Header.module.css";
 
-const Header = () => {
+type headerProps = {
+  onCreateNew: () => void;
+};
+
+const Header = ({ onCreateNew }: headerProps) => {
   return (
     <nav className={classes["nav-bar"]}>
       <div className="brand">
@@ -16,6 +20,7 @@ const Header = () => {
             type="button"
             className={classes["header__button"]}
             title="Add New item"
+            onClick={onCreateNew}
           >
             <span className="material-symbols-outlined">add_circle</span>
           </button>

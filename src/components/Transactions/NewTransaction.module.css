@@ -1,0 +1,199 @@
+.new-transaction-container {
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-transaction-container form {
+  accent-color: var(--color1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  border: 1px solid var(--color1);
+  border-radius: 5px;
+  font-family: inherit;
+  padding: 1rem 0.5rem;
+}
+
+.form-row {
+  min-width: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  min-height: 50px;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.form-actions button {
+  min-width: 75px;
+  min-height: 25px;
+  border-radius: 3px;
+  background-color: var(--color2);
+  padding: 0.5rem 1rem;
+}
+
+.form-actions button:hover {
+  border-radius: 4px;
+  background-color: var(--color4);
+  cursor: pointer;
+  color: black;
+  border: 2px solid var(--color4);
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.radio-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-buttons label {
+  padding: 10px 20px;
+  border: 2px solid var(--color1);
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: var(--color2);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.radio-buttons label:hover {
+  background-color: var(--color1);
+  color: white;
+}
+
+input[type="radio"]:checked + label {
+  background-color: var(--color1);
+  color: white;
+}
+
+label {
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.1;
+  color: black;
+}
+
+.date-picker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.date-picker input[type="date"] {
+  appearance: none;
+  padding: 1.5rem;
+  -webkit-appearance: none;
+  padding: 0.5rem;
+  border: 2px solid var(--color1);
+  border-radius: 5px;
+  background-color: var(--color2);
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.date-picker input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  background-size: 20px 20px;
+  opacity: 1;
+  background-repeat: no-repeat;
+}
+
+.custom-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.custom-dropdown select {
+  width: 150px;
+  padding: 10px;
+  border: 2px solid var(--color1);
+  border-radius: 5px;
+  background-color: var(--color2);
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.custom-dropdown select:focus {
+  border-color: var(--color4);
+  outline: none;
+  background-color: var(--color1);
+}
+
+.custom-dropdown label {
+  font-weight: bold;
+}
+
+.custom-text-input {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 500px;
+}
+
+.custom-text-input input[type="text"] {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-bottom: 2px solid var(--color1);
+  line-height: 2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-text-input input[type="text"]:focus {
+  outline: none;
+}
+
+.amount-input {
+  min-width: 300px;
+}
+
+.amount-input input[type="number"] {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--color1);
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Placeholder styling */
+.amount-input input[type="number"]::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Focus styling */
+.amount-input input[type="number"]:focus {
+  outline: none;
+}
