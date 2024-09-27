@@ -1,6 +1,7 @@
 import { useAppDispatch } from "../../hooks";
 import { Transaction } from "../../models/Transaction";
 import { openModal } from "../../store/modal";
+import { deleteTransaction } from "../../store/transactions";
 import EditTransaction from "./EditTransaction";
 
 import classes from "./TransactionItem.module.css";
@@ -22,6 +23,11 @@ const TransactionItem = ({ transaction }: TransactionItemProps) => {
         body: <EditTransaction transaction={transaction} />,
       })
     );
+  };
+
+  const onDeleteHandler = () => {
+    console.log(`Deleting item with id: ${transaction.id}`);
+    dispatch(deleteTransaction(transaction.id));
   };
 
   return (
@@ -54,8 +60,11 @@ const TransactionItem = ({ transaction }: TransactionItemProps) => {
           {transaction.type === "expense" ? "-" : "+"} {transaction.amount} $
         </p>
         <div className={classes["user-actions"]}>
-          <div className={classes["user-action"]} onClick={onEditHandler}>
+          <div className={classes["user-action"]} onClick={onEditHandler} data-title="Edit">
             <span className="material-symbols-outlined">edit</span>
+          </div>
+          <div className={classes["user-action"]} onClick={onDeleteHandler} data-title="Delete">
+            <span className="material-symbols-outlined">delete</span>
           </div>
         </div>
       </div>

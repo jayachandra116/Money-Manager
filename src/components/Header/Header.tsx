@@ -5,7 +5,7 @@ import classes from "./Header.module.css";
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  
+
   const addTransactionHandler = () => {
     dispatch(openModal({ title: "Add New", body: <NewTransaction /> }));
   };
@@ -24,7 +24,7 @@ const Header = () => {
           <button
             type="button"
             className={classes["header__button"]}
-            title="Add New item"
+            data-title="Add New item"
             onClick={addTransactionHandler}
           >
             <span className="material-symbols-outlined">add_circle</span>
