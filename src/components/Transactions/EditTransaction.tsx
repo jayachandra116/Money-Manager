@@ -5,10 +5,11 @@ import classes from "./NewTransaction.module.css";
 import { Transaction, TransactionSubCategory } from "../../models/Transaction";
 
 import { useAppDispatch } from "../../hooks";
-import { addNewTransaction } from "../../store/transactions";
+import { updateTransaction } from "../../store/transactions";
 
 // import Modal from "../Modal/Modal";
 import { closeModal } from "../../store/modal";
+import { getDatePickerDateString } from "../../util/transformers";
 
 const capitalizeFirstLetter = (word: string) => {
   return word.charAt(0).toUpperCase() + word.slice(1);
@@ -33,24 +34,29 @@ const billsSubCategories = [
 ];
 const transportationSubCategories = ["bus", "taxi", "petrol", "servicing"];
 
-type userInputState = Partial<Omit<Transaction, "id">>;
+// type userInputState = Partial<Omit<Transaction, "id">>;
 type subCategoriesOptionsState = {
   subCategoriesOptions: string[];
 };
 
-const NewTransaction = () => {
+type EditTransactionProps = {
+  transaction: Transaction | null;
+};
+
+const EditTransaction = ({ transaction }: EditTransactionProps) => {
   const dispatch = useAppDispatch();
 
   const [userInput, setUserInput] = useState<
-    userInputState & subCategoriesOptionsState
+    Transaction & subCategoriesOptionsState
   >({
-    amount: 0,
-    type: "expense",
-    date: new Date().toISOString(),
-    account: "cash",
-    category: "other",
-    subCategory: "",
-    note: "",
+    id: transaction?.id || "",
+    amount: transaction?.amount || 0,
+    type: transaction?.type || "expense",
+    date: transaction?.date || new Date().toISOString(),
+    account: transaction?.account || "cash",
+    category: transaction?.category || "other",
+    subCategory: transaction?.subCategory || "",
+    note: transaction?.note || "",
     subCategoriesOptions: [],
   });
 
@@ -114,8 +120,10 @@ const NewTransaction = () => {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log("Before update: ");
+    console.log(transaction);
     const newTransaction: Transaction = {
-      id: Math.random().toString(),
+      id: userInput.id,
       type: userInput.type!,
       date: new Date(userInput.date!).toISOString(),
       account: userInput.account!,
@@ -124,8 +132,9 @@ const NewTransaction = () => {
       amount: userInput.amount!,
       note: userInput.note!,
     };
+    console.log("after update: ");
     console.log(newTransaction);
-    dispatch(addNewTransaction(newTransaction));
+    dispatch(updateTransaction(newTransaction));
     dispatch(closeModal());
   };
 
@@ -174,7 +183,7 @@ const NewTransaction = () => {
               id="date"
               name="date"
               type="date"
-              value={userInput.date}
+              value={getDatePickerDateString(userInput.date)}
               onChange={(e) => onInputChange("date", e.target.value)}
             />
           </div>
@@ -229,7 +238,7 @@ const NewTransaction = () => {
             <select
               id="subCategory"
               name="subCategory"
-              value={userInput.subCategory}
+              value={userInput.subCategory ?? null}
               onChange={(e) => onInputChange("subCategory", e.target.value)}
             >
               {userInput.subCategoriesOptions.map((item) => (
@@ -247,6 +256,7 @@ const NewTransaction = () => {
               id="note"
               name="note"
               placeholder="note"
+              value={userInput.note ?? null}
               onChange={(e) => onInputChange("note", e.target.value)}
             />
           </div>
@@ -259,16 +269,17 @@ const NewTransaction = () => {
               name="amount"
               placeholder="Amount"
               min={0}
+              value={userInput.amount ?? null}
               onChange={(e) => onInputChange("amount", e.target.value)}
             />
           </div>
         </div>
         <div className={classes["form-actions"]}>
-          <button type="submit">Add Item</button>
+          <button type="submit">Update Item</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default NewTransaction;
+export default EditTransaction;

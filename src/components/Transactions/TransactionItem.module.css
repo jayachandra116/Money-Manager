@@ -1,17 +1,10 @@
 .transaction-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr 2fr 2fr 1fr;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr 1fr;
   padding: 5px 10px;
   border-bottom: 1px solid #e0e0e0;
   align-items: center;
   transition: background-color 0.5s ease;
-}
-
-.transaction-item:hover {
-  color: black;
-  background-color: var(--color3);
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 .transaction-item__date {
@@ -50,4 +43,15 @@
 
 .income {
   color: #117554;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-action:hover {
+  cursor: pointer;
+  color: var(--color1);
 }

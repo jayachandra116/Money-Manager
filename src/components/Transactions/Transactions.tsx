@@ -2,16 +2,25 @@ import classes from "./Transactions.module.css";
 
 import TransactionItem from "./TransactionItem";
 
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { openModal } from "../../store/modal";
+import NewTransaction from "./NewTransaction";
 
-type transactionsProps = {
-  onCreateNew: () => void;
-};
-
-const Transactions = ({ onCreateNew }: transactionsProps) => {
+const Transactions = () => {
+  const dispatch = useAppDispatch();
   const transactions = useAppSelector(
     (state) => state.transactions.transactions
   );
+
+  const createNewTransactionHandler = () => {
+    console.log(`Creating new transaction...`);
+    dispatch(
+      openModal({
+        title: "Add New",
+        body: <NewTransaction />,
+      })
+    );
+  };
 
   return (
     <div className={classes["transactions"]}>
@@ -21,7 +30,10 @@ const Transactions = ({ onCreateNew }: transactionsProps) => {
           Transactions
         </h2>
         <div className={classes["actions"]}>
-          <div className={classes["actions-btn"]} onClick={onCreateNew}>
+          <div
+            className={classes["actions-btn"]}
+            onClick={createNewTransactionHandler}
+          >
             <span className="material-symbols-outlined">add_box</span>
             <p>Add new</p>
           </div>
@@ -35,8 +47,11 @@ const Transactions = ({ onCreateNew }: transactionsProps) => {
           <div>Account</div>
           <div>Category</div>
           <div>Amount</div>
+          <div>Actions</div>
         </div>
-        {transactions.length === 0 ? <center>Add new transactions</center> : null}
+        {transactions.length === 0 ? (
+          <center>Add new transactions</center>
+        ) : null}
         {transactions.map((item) => (
           <TransactionItem transaction={item} key={item.id} />
         ))}

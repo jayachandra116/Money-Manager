@@ -1,10 +1,15 @@
+import { useAppDispatch } from "../../hooks";
+import { openModal } from "../../store/modal";
+import NewTransaction from "../Transactions/NewTransaction";
 import classes from "./Header.module.css";
 
-type headerProps = {
-  onCreateNew: () => void;
-};
+const Header = () => {
+  const dispatch = useAppDispatch();
+  
+  const addTransactionHandler = () => {
+    dispatch(openModal({ title: "Add New", body: <NewTransaction /> }));
+  };
 
-const Header = ({ onCreateNew }: headerProps) => {
   return (
     <nav className={classes["nav-bar"]}>
       <div className="brand">
@@ -20,7 +25,7 @@ const Header = ({ onCreateNew }: headerProps) => {
             type="button"
             className={classes["header__button"]}
             title="Add New item"
-            onClick={onCreateNew}
+            onClick={addTransactionHandler}
           >
             <span className="material-symbols-outlined">add_circle</span>
           </button>

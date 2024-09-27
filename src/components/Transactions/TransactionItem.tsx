@@ -1,4 +1,7 @@
+import { useAppDispatch } from "../../hooks";
 import { Transaction } from "../../models/Transaction";
+import { openModal } from "../../store/modal";
+import EditTransaction from "./EditTransaction";
 
 import classes from "./TransactionItem.module.css";
 
@@ -8,6 +11,18 @@ type TransactionItemProps = {
 
 const TransactionItem = ({ transaction }: TransactionItemProps) => {
   const transactionDateObj = new Date(transaction.date);
+  const dispatch = useAppDispatch();
+
+  const onEditHandler = () => {
+    console.log(`Editing item with id: ${transaction.id}`);
+    console.log(`Opening modal...`);
+    dispatch(
+      openModal({
+        title: "Edit Transaction",
+        body: <EditTransaction transaction={transaction} />,
+      })
+    );
+  };
 
   return (
     <>
@@ -38,6 +53,11 @@ const TransactionItem = ({ transaction }: TransactionItemProps) => {
         >
           {transaction.type === "expense" ? "-" : "+"} {transaction.amount} $
         </p>
+        <div className={classes["user-actions"]}>
+          <div className={classes["user-action"]} onClick={onEditHandler}>
+            <span className="material-symbols-outlined">edit</span>
+          </div>
+        </div>
       </div>
     </>
   );

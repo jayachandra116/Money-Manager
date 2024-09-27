@@ -1,34 +1,29 @@
-import { useState } from "react";
-
 import "./App.css";
 
 import Header from "./components/Header/Header";
 import NavBar from "./components/NavBar/NavBar";
-import NewTransaction from "./components/Transactions/NewTransaction";
+// import NewTransaction from "./components/Transactions/NewTransaction";
+// import Transactions from "./components/Transactions/Transactions";
+import { useAppSelector } from "./hooks";
+// import { closeModal, openModal } from "./store/modal";
+import Modal from "./components/Modal/Modal";
 import Transactions from "./components/Transactions/Transactions";
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  // const dispatch = useAppDispatch();
+  const { isOpen: modalIsOpen } = useAppSelector((state) => state.modal);
 
   return (
     <div className={"container"}>
+      {modalIsOpen && <Modal />}
       <div className="header">
-        <Header onCreateNew={handleOpenModal}/>
+        <Header />
       </div>
       <div className="side-nav">
         <NavBar />
       </div>
       <div className="main-area">
-        {isModalOpen && <NewTransaction onClose={handleCloseModal} />}
-        <Transactions onCreateNew={handleOpenModal} />
+        <Transactions/>
       </div>
     </div>
   );
